@@ -139,11 +139,11 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     }
                                 
 /*    private void getLocationPermission() {
-    /*
-     * Request location permission, so that we can get the location of the
-     * device. The result of the permission request is handled by a callback,
-     * onRequestPermissionsResult.
-     */
+    
+     // Request location permission, so that we can get the location of the
+     // device. The result of the permission request is handled by a callback,
+     // onRequestPermissionsResult.
+     
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
