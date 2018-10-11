@@ -94,7 +94,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 
             LatLng myLat = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-            // Add a marker in Sydney and move the camera
+            // Add a marker in Emory and move the camera
             LatLng emory = new LatLng(33.7925, -84.3240);
             mMap.addMarker(new MarkerOptions().position(emory).title("Welcome to Emory"));
             // Zoom in 15
