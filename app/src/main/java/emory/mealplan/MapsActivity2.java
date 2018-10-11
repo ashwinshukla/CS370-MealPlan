@@ -95,9 +95,11 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
 
             LatLng myLat = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
             // Add a marker in Sydney and move the camera
-            LatLng sydney = new LatLng(-34, 151);
-            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLat));
+            LatLng emory = new LatLng(33.7925, -84.3240);
+            mMap.addMarker(new MarkerOptions().position(emory).title("Welcome to Emory"));
+            // Zoom in 15
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(emory,15));
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(myLat));
         }
     }
 
