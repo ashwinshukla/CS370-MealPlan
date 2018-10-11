@@ -4,6 +4,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     private GoogleApiClient mGoogleApiClient;
     private GoogleMap mMap;
     private Location mLastLocation;
+    private Circle circle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,26 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        
+        // Add circles
+        circle = mMap.addCircle(new CircleOptions()
+            .center(new LatLng(37.4, -122.1))
+            .radius(1000)
+            .strokeWidth(10)
+            .strokeColor(Color.GREEN)
+            .fillColor(Color.argb(128, 255, 0, 0))
+            .clickable(true);
+
+        map.setOnCircleClickListener(new OnCircleClickListener() {
+
+                @Override
+                public void onCircleClick(Circle circle) {
+                    // Flip the r, g and b components of the circle's
+                    // stroke color.
+                    int strokeColor = circle.getStrokeColor() ^ 0x00ffffff;
+                    circle.setStrokeColor(strokeColor);
+                }
+        });
     }
 
     @Override
@@ -94,6 +115,7 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
 
             LatLng myLat = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+           
             // Add a marker in Emory and move the camera
             LatLng emory = new LatLng(33.7925, -84.3240);
             mMap.addMarker(new MarkerOptions().position(emory).title("Welcome to Emory"));
@@ -115,4 +137,22 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
             }
         }
     }
+                                
+/*    private void getLocationPermission() {
+    /*
+     * Request location permission, so that we can get the location of the
+     * device. The result of the permission request is handled by a callback,
+     * onRequestPermissionsResult.
+     */
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+*/
 }
