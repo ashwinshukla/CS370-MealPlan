@@ -60,7 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .fillColor(Color.argb(128, 255, 0, 0))
                 .clickable(true));
 
-        circle.setOnCircleClickListener(new OnCircleClickListener() {
+        googleMap.setOnCircleClickListener(new OnCircleClickListener() {
 
             @Override
             public void onCircleClick(Circle circle) {
